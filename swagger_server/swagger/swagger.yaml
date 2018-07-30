@@ -1,0 +1,155 @@
+---
+swagger: "2.0"
+info:
+  description: "Detalles del propósito del API."
+  version: "1.0.0"
+  title: "API Weather Station Project"
+  contact:
+    email: "javis.cta@gmail.com"
+host: "127.0.0.1:5000"
+basePath: "/api"
+tags:
+- name: "estacion"
+  description: "Operaciones para los dispositivos de reporte del clima."
+- name: "sensor"
+  description: "Detalles sobre los dispositivos que miden el clima."
+- name: "clima"
+  description: "Mediciones obtenidas por las estaciones meteorologicas."
+schemes:
+- "https"
+- "http"
+paths:
+  /estacion:
+    post:
+      tags:
+      - "estacion"
+      summary: "Registra los valores de telemetría de una estación de medición del\
+        \ tiempo."
+      operationId: "estacion_post"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "mediciones del equipo en formato JSON"
+        required: true
+        schema:
+          $ref: "#/definitions/Medicion"
+      responses:
+        200:
+          description: "Registro satisfactorio."
+        500:
+          description: "Error al registrar la data."
+      x-swagger-router-controller: "swagger_server.controllers.estacion_controller"
+  /clima/{idEstacion}:
+    get:
+      tags:
+      - "clima"
+      summary: "Devuelve los valores medidos mas reciente, de una estación."
+      operationId: "clima_id_estacion_get"
+      parameters:
+      - name: "idEstacion"
+        in: "path"
+        description: "Id del hardware del equipo de medición."
+        required: true
+        type: "string"
+      - name: "inicio"
+        in: "query"
+        description: "fecha de inicio de la medición."
+        required: false
+        type: "string"
+        format: "date-time"
+      - name: "fin"
+        in: "query"
+        description: "fecha de fin de la medición."
+        required: false
+        type: "string"
+        format: "date-time"
+      - name: "sensor"
+        in: "query"
+        description: "nombre del sensor sobre el cual queremos obtener informació\
+          n."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "temperatura"
+          - "humedad"
+          - "presion"
+          - "altitud"
+          - "todos"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "consulta satisfactoria."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Medicion"
+      x-swagger-router-controller: "swagger_server.controllers.clima_controller"
+definitions:
+  Medicion:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: "Clave primaria que identifica al registro."
+      idHardware:
+        type: "string"
+        description: "Identificador alfanumerico del dispositivo físico de medició\
+          n (estación)."
+      temperatura:
+        type: "number"
+        example: 30
+        description: "Valor leido por el sensor expresado en grados celcius."
+      humedad:
+        type: "string"
+        example: "75%"
+        description: "Cantidad de agua, vapor de agua o cualquier otro líquido que\
+          \ está presente en la superficie o el interior de un cuerpo o en el aire.\
+          \ La medida viene expresada en porcentaje."
+      presionBar:
+        type: "number"
+        example: 1016
+        description: "Fuerza por unidad de superficie que ejerce el aire que forma\
+          \ la atmósfera sobre la superficie terrestre, expresado en hPa (hectopascal)"
+      altitud:
+        type: "number"
+        example: 53
+        description: "Distancia vertical de un punto de la superficie terrestre respecto\
+          \ al nivel del mar, viene expresada en metros."
+      fecha:
+        type: "string"
+        format: "date-time"
+        description: "Fecha y hora en la que se registro en la base de datos."
+    example:
+      presionBar: 1016
+      fecha: "2000-01-23T04:56:07.000+00:00"
+      altitud: 53
+      id: 0
+      temperatura: 30
+      humedad: "75%"
+      idHardware: "idHardware"
+  Sensor:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        description: ""
+      idHardware:
+        type: "string"
+        description: ""
+      nombre:
+        type: "string"
+        description: ""
+      latitud:
+        type: "number"
+        description: ""
+      longitud:
+        type: "number"
+        description: ""
+      ubicacion:
+        type: "string"
+        description: ""
+      estatus:
+        type: "integer"
+        description: ""

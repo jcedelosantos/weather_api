@@ -1,0 +1,25 @@
+# Importamos la libreria de SQLAlchemy
+from . import db
+from sqlalchemy.types import DECIMAL
+
+class Medicion(db.Model):
+	"""docstring for Medicion"""
+	id =  db.Column(db.Integer(), primary_key= True)
+	hardware = db.Column(db.String(30))
+	temperatura = db.Column(db.DECIMAL(10,4))
+	humedad = db.Column(db.String(5))
+	presion= db.Column(db.DECIMAL(10,4))
+	altitud=db.Column(db.DECIMAL(10,4))
+	fecha = db.Column(db.DateTime())
+	# sensors = db.relationship('Sensor', backref='owner')
+
+class Sensor(db.Model):
+	"""docstring for Sensor"""
+	id =  db.Column(db.Integer(), primary_key= True)
+	# owner_id = db.Column(db.Integer, db.ForeignKey('medicion.id'))
+	hardware =db.Column(db.String(30))
+	nombre = db.Column(db.String())
+	latitud = db.Column(db.DECIMAL(10,18))
+	longitud= db.Column(db.DECIMAL(10,18))
+	ubicacion=db.Column(db.String())
+	estatus = db.Column(db.Integer())

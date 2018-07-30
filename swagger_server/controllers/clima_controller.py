@@ -30,18 +30,20 @@ def clima_id_estacion_get(idEstacion, inicio=None, fin=None, sensor=None):  # no
     """
     inicio = util.deserialize_datetime(inicio)
     fin = util.deserialize_datetime(fin)
-
-    # Obtenemos el listado de los registros de la estación consultada
-    consulta = Med.query.filter_by(hardware=idEstacion).all()
-
     # Variable de salida
     res = list()
-    # Recorremos los resultados de la consulta.
-    for fila in consulta:
-        # Llenamos el JSON basado en la data de la fila 
-        f = fila.__dict__
-        f.pop('_sa_instance_state')
-        # Agregamos la medición al vector de salida
-        res.append(f)
+    try:
+        # Obtenemos el listado de los registros de la estación consultada
+        consulta = Med.query.filter_by(hardware=idEstacion).all()
+
+        # Recorremos los resultados de la consulta.
+        for fila in consulta:
+            # Llenamos el JSON basado en la data de la fila 
+            f = fila.__dict__
+            f.pop('_sa_instance_state')
+            # Agregamos la medición al vector de salida
+            res.append(f)        
+    except Exception as e:
+        return "Error inesperado. Detalles [{0}]".format(e), 500
 
     return res, 200

@@ -15,13 +15,13 @@ class Sensor(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: int=None, id_hardware: str=None, nombre: str=None, latitud: float=None, longitud: float=None, ubicacion: str=None, estatus: int=None):  # noqa: E501
+    def __init__(self, id: int=None, hardware: str=None, nombre: str=None, latitud: float=None, longitud: float=None, ubicacion: str=None, estatus: int=None):  # noqa: E501
         """Sensor - a model defined in Swagger
 
         :param id: The id of this Sensor.  # noqa: E501
         :type id: int
-        :param id_hardware: The id_hardware of this Sensor.  # noqa: E501
-        :type id_hardware: str
+        :param hardware: The hardware of this Sensor.  # noqa: E501
+        :type hardware: str
         :param nombre: The nombre of this Sensor.  # noqa: E501
         :type nombre: str
         :param latitud: The latitud of this Sensor.  # noqa: E501
@@ -35,7 +35,7 @@ class Sensor(Model):
         """
         self.swagger_types = {
             'id': int,
-            'id_hardware': str,
+            'hardware': str,
             'nombre': str,
             'latitud': float,
             'longitud': float,
@@ -45,7 +45,7 @@ class Sensor(Model):
 
         self.attribute_map = {
             'id': 'id',
-            'id_hardware': 'idHardware',
+            'hardware': 'hardware',
             'nombre': 'nombre',
             'latitud': 'latitud',
             'longitud': 'longitud',
@@ -54,7 +54,7 @@ class Sensor(Model):
         }
 
         self._id = id
-        self._id_hardware = id_hardware
+        self._hardware = hardware
         self._nombre = nombre
         self._latitud = latitud
         self._longitud = longitud
@@ -96,27 +96,27 @@ class Sensor(Model):
         self._id = id
 
     @property
-    def id_hardware(self) -> str:
-        """Gets the id_hardware of this Sensor.
+    def hardware(self) -> str:
+        """Gets the hardware of this Sensor.
 
           # noqa: E501
 
-        :return: The id_hardware of this Sensor.
+        :return: The hardware of this Sensor.
         :rtype: str
         """
-        return self._id_hardware
+        return self._hardware
 
-    @id_hardware.setter
-    def id_hardware(self, id_hardware: str):
-        """Sets the id_hardware of this Sensor.
+    @hardware.setter
+    def hardware(self, hardware: str):
+        """Sets the hardware of this Sensor.
 
           # noqa: E501
 
-        :param id_hardware: The id_hardware of this Sensor.
-        :type id_hardware: str
+        :param hardware: The hardware of this Sensor.
+        :type hardware: str
         """
 
-        self._id_hardware = id_hardware
+        self._hardware = hardware
 
     @property
     def nombre(self) -> str:

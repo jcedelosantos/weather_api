@@ -15,19 +15,19 @@ class Medicion(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: int=None, id_hardware: str=None, temperatura: float=None, humedad: str=None, presion_bar: float=None, altitud: float=None, fecha: datetime=None):  # noqa: E501
+    def __init__(self, id: int=None, hardware: str=None, temperatura: float=None, humedad: str=None, presion: float=None, altitud: float=None, fecha: datetime=None):  # noqa: E501
         """Medicion - a model defined in Swagger
 
         :param id: The id of this Medicion.  # noqa: E501
         :type id: int
-        :param id_hardware: The id_hardware of this Medicion.  # noqa: E501
-        :type id_hardware: str
+        :param hardware: The hardware of this Medicion.  # noqa: E501
+        :type hardware: str
         :param temperatura: The temperatura of this Medicion.  # noqa: E501
         :type temperatura: float
         :param humedad: The humedad of this Medicion.  # noqa: E501
         :type humedad: str
-        :param presion_bar: The presion_bar of this Medicion.  # noqa: E501
-        :type presion_bar: float
+        :param presion: The presion of this Medicion.  # noqa: E501
+        :type presion: float
         :param altitud: The altitud of this Medicion.  # noqa: E501
         :type altitud: float
         :param fecha: The fecha of this Medicion.  # noqa: E501
@@ -35,29 +35,29 @@ class Medicion(Model):
         """
         self.swagger_types = {
             'id': int,
-            'id_hardware': str,
+            'hardware': str,
             'temperatura': float,
             'humedad': str,
-            'presion_bar': float,
+            'presion': float,
             'altitud': float,
             'fecha': datetime
         }
 
         self.attribute_map = {
             'id': 'id',
-            'id_hardware': 'idHardware',
+            'hardware': 'hardware',
             'temperatura': 'temperatura',
             'humedad': 'humedad',
-            'presion_bar': 'presionBar',
+            'presion': 'presion',
             'altitud': 'altitud',
             'fecha': 'fecha'
         }
 
         self._id = id
-        self._id_hardware = id_hardware
+        self._hardware = hardware
         self._temperatura = temperatura
         self._humedad = humedad
-        self._presion_bar = presion_bar
+        self._presion = presion
         self._altitud = altitud
         self._fecha = fecha
 
@@ -96,27 +96,27 @@ class Medicion(Model):
         self._id = id
 
     @property
-    def id_hardware(self) -> str:
-        """Gets the id_hardware of this Medicion.
+    def hardware(self) -> str:
+        """Gets the hardware of this Medicion.
 
         Identificador alfanumerico del dispositivo físico de medición (estación).  # noqa: E501
 
-        :return: The id_hardware of this Medicion.
+        :return: The hardware of this Medicion.
         :rtype: str
         """
-        return self._id_hardware
+        return self._hardware
 
-    @id_hardware.setter
-    def id_hardware(self, id_hardware: str):
-        """Sets the id_hardware of this Medicion.
+    @hardware.setter
+    def hardware(self, hardware: str):
+        """Sets the hardware of this Medicion.
 
         Identificador alfanumerico del dispositivo físico de medición (estación).  # noqa: E501
 
-        :param id_hardware: The id_hardware of this Medicion.
-        :type id_hardware: str
+        :param hardware: The hardware of this Medicion.
+        :type hardware: str
         """
 
-        self._id_hardware = id_hardware
+        self._hardware = hardware
 
     @property
     def temperatura(self) -> float:
@@ -165,27 +165,27 @@ class Medicion(Model):
         self._humedad = humedad
 
     @property
-    def presion_bar(self) -> float:
-        """Gets the presion_bar of this Medicion.
+    def presion(self) -> float:
+        """Gets the presion of this Medicion.
 
         Fuerza por unidad de superficie que ejerce el aire que forma la atmósfera sobre la superficie terrestre, expresado en hPa (hectopascal)  # noqa: E501
 
-        :return: The presion_bar of this Medicion.
+        :return: The presion of this Medicion.
         :rtype: float
         """
-        return self._presion_bar
+        return self._presion
 
-    @presion_bar.setter
-    def presion_bar(self, presion_bar: float):
-        """Sets the presion_bar of this Medicion.
+    @presion.setter
+    def presion(self, presion: float):
+        """Sets the presion of this Medicion.
 
         Fuerza por unidad de superficie que ejerce el aire que forma la atmósfera sobre la superficie terrestre, expresado en hPa (hectopascal)  # noqa: E501
 
-        :param presion_bar: The presion_bar of this Medicion.
-        :type presion_bar: float
+        :param presion: The presion of this Medicion.
+        :type presion: float
         """
 
-        self._presion_bar = presion_bar
+        self._presion = presion
 
     @property
     def altitud(self) -> float:

@@ -93,7 +93,7 @@ definitions:
       id:
         type: "integer"
         description: "Clave primaria que identifica al registro."
-      idHardware:
+      hardware:
         type: "string"
         description: "Identificador alfanumerico del dispositivo físico de medició\
           n (estación)."
@@ -107,7 +107,7 @@ definitions:
         description: "Cantidad de agua, vapor de agua o cualquier otro líquido que\
           \ está presente en la superficie o el interior de un cuerpo o en el aire.\
           \ La medida viene expresada en porcentaje."
-      presionBar:
+      presion:
         type: "number"
         example: 1016
         description: "Fuerza por unidad de superficie que ejerce el aire que forma\
@@ -122,20 +122,20 @@ definitions:
         format: "date-time"
         description: "Fecha y hora en la que se registro en la base de datos."
     example:
-      presionBar: 1016
       fecha: "2000-01-23T04:56:07.000+00:00"
       altitud: 53
       id: 0
       temperatura: 30
       humedad: "75%"
-      idHardware: "idHardware"
+      hardware: "hardware"
+      presion: 1016
   Sensor:
     type: "object"
     properties:
       id:
         type: "integer"
         description: ""
-      idHardware:
+      hardware:
         type: "string"
         description: ""
       nombre:
